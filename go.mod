@@ -1,4 +1,4 @@
-module github.com/aarondl/opt
+module github.com/seambiz/opt
 
 go 1.18
 
