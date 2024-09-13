@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aarondl/opt"
+	"github.com/seambiz/opt"
 )
 
 func TestConstruction(t *testing.T) {
@@ -143,7 +143,6 @@ func TestMarshalJSON(t *testing.T) {
 	checkJSON(t, val, `"hello"`)
 	val.Unset()
 	checkJSON(t, val, `null`)
-
 }
 
 func TestMarshalJSONIsZero(t *testing.T) {

@@ -9,10 +9,10 @@ import (
 	"errors"
 	"reflect"
 
-	"github.com/aarondl/opt"
-	"github.com/aarondl/opt/internal/globaldata"
-	"github.com/aarondl/opt/null"
-	"github.com/aarondl/opt/omit"
+	"github.com/seambiz/opt"
+	"github.com/seambiz/opt/internal/globaldata"
+	"github.com/seambiz/opt/null"
+	"github.com/seambiz/opt/omit"
 )
 
 // state is the state of the nullable object
