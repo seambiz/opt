@@ -34,6 +34,15 @@ func ToDriverValue(val any) (driver.Value, error) {
 		return marshaler.MarshalBinary()
 	}
 
+	// check if val is a pointer
+	if refVal.Kind() == reflect.Ptr {
+		if refVal.IsNil() {
+			return nil, nil
+		}
+
+		refVal = refVal.Elem()
+	}
+
 	switch refVal.Kind() {
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		return refVal.Int(), nil

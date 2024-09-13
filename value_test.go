@@ -26,6 +26,10 @@ type (
 )
 
 func TestToDriverValue(t *testing.T) {
+	s := "test"
+	var ss *string
+	u := uint(1)
+
 	doTest[int64](t, customInt(0))
 	doTest[int64](t, customInt8(0))
 	doTest[int64](t, customInt16(0))
@@ -42,6 +46,11 @@ func TestToDriverValue(t *testing.T) {
 	doTest[[]byte](t, customByteSlice(""))
 	doTest[string](t, customString(""))
 	doTest[customStruct](t, customStruct{})
+	doTest[string](t, &s)
+	doTest[any](t, ss)
+	doTest[any, *string](t, nil)
+	doTest[any, *uint](t, nil)
+	doTest[int64](t, &u)
 }
 
 func doTest[E any, T any](t *testing.T, v T) {
@@ -55,7 +64,20 @@ func doTest[E any, T any](t *testing.T, v T) {
 
 		var zero E
 		if reflect.TypeOf(drVal) != reflect.TypeOf(zero) {
-			t.Fatalf("Expected value type %T but got %T", zero, drVal)
+			t.Fatalf("Expected value type %T but got %T (%v - %v)", zero, drVal, zero, drVal)
+		}
+
+		var vv interface{}
+		vv = v
+		if reflect.ValueOf(v).Kind() == reflect.Pointer {
+			if reflect.ValueOf(v).IsNil() {
+				vv = nil
+			} else {
+				vv = reflect.ValueOf(v).Elem()
+			}
+		}
+		if fmt.Sprintf("%v", drVal) != fmt.Sprintf("%v", vv) {
+			t.Fatalf("Expected value %v but got %v", drVal, vv)
 		}
 	})
 }
