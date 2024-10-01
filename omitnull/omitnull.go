@@ -111,15 +111,13 @@ func (v Val[T]) GetOrZero() T {
 }
 
 // GetNull retrieves the value as a nullable value.
-func (v Val[T]) GetNull() (null.Val[T], bool) {
+func (v Val[T]) GetNull() null.Val[T] {
 	switch v.state {
 	case StateSet:
-		return null.From(v.value), true
-	case StateNull:
-		return null.Val[T]{}, true
-	default:
-		return null.Val[T]{}, false
+		return null.From(v.value)
 	}
+
+	return null.Val[T]{}
 }
 
 // GetOmit retrieves the value as a omittable value.
