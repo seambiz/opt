@@ -215,7 +215,7 @@ func (v Val[T]) MarshalJSON() ([]byte, error) {
 
 		return opt.JSONMarshal(v.value)
 	default:
-		return globaldata.JSONNull, nil
+		return globaldata.JSONUndefined, nil
 	}
 }
 

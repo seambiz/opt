@@ -326,8 +326,10 @@ func (v Val[T]) MarshalJSON() ([]byte, error) {
 	switch v.state {
 	case StateSet:
 		return opt.JSONMarshal(v.value)
-	default:
+	case StateNull:
 		return globaldata.JSONNull, nil
+	default:
+		return globaldata.JSONUndefined, nil
 	}
 }
 

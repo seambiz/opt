@@ -9,6 +9,7 @@ import (
 
 var (
 	JSONNull                      = []byte("null")
+	JSONUndefined                 = []byte("undefined")
 	DriverValuerIntf              = reflect.TypeOf((*driver.Valuer)(nil)).Elem()
 	EncodingTextMarshalerIntf     = reflect.TypeOf((*encoding.TextMarshaler)(nil)).Elem()
 	EncodingTextUnmarshalerIntf   = reflect.TypeOf((*encoding.TextUnmarshaler)(nil)).Elem()
