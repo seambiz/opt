@@ -86,8 +86,8 @@ func TestConversions(t *testing.T) {
 	if n.MustGet() != 5 {
 		t.Error("wrong value")
 	}
-	n, ok = val.GetNull()
-	if !ok || !n.IsSet() || n.MustGet() != 5 {
+	n = val.GetNull()
+	if !n.IsSet() || n.MustGet() != 5 {
 		t.Error("should be set")
 	}
 	val.Null()
@@ -95,8 +95,8 @@ func TestConversions(t *testing.T) {
 	if !n.IsNull() {
 		t.Error("should be null")
 	}
-	n, ok = val.GetNull()
-	if !ok || !n.IsNull() {
+	n = val.GetNull()
+	if !n.IsNull() {
 		t.Error("should be null")
 	}
 	val.Unset()
