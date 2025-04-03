@@ -35,11 +35,11 @@ func TestToDriverValue(t *testing.T) {
 	doTest[int64](t, customInt16(0))
 	doTest[int64](t, customInt32(0))
 	doTest[int64](t, customInt64(0))
-	doTest[int64](t, customUint(0))
-	doTest[int64](t, customUint8(0))
-	doTest[int64](t, customUint16(0))
-	doTest[int64](t, customUint32(0))
-	doTest[int64](t, customUint64(0))
+	doTest[uint64](t, customUint(0))
+	doTest[uint64](t, customUint8(0))
+	doTest[uint64](t, customUint16(0))
+	doTest[uint64](t, customUint32(0))
+	doTest[uint64](t, customUint64(0))
 	doTest[float64](t, customFloat32(0))
 	doTest[float64](t, customFloat64(0))
 	doTest[bool](t, customBool(false))
@@ -50,7 +50,7 @@ func TestToDriverValue(t *testing.T) {
 	doTest[any](t, ss)
 	doTest[any, *string](t, nil)
 	doTest[any, *uint](t, nil)
-	doTest[int64](t, &u)
+	doTest[uint64](t, &u)
 }
 
 func doTest[E any, T any](t *testing.T, v T) {
